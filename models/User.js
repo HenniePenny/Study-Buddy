@@ -39,7 +39,7 @@ User.init(
       },
     },
     isAdmin: {
-      type: sequelize.BOOLEAN,
+      type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
     cohort_id: {
