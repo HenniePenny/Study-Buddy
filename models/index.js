@@ -1,16 +1,23 @@
 const User = require('./User');
 const Cohort = require('./Cohort');
 const Student = require('./Student');
+const UserCohort = require('./UserCohort');
 
 User.belongsToMany(Cohort, {
   foreignKey: 'user_id',
+  through: UserCohort,
 });
 
-Cohort.belongsToMany(Student, {
+Cohort.belongsToMany(User, {
+  foreignKey: 'cohort_id',
+  through: UserCohort,
+});
+
+Cohort.hasMany(Student, {
   foreignKey: 'cohort_id',
 });
 
-Student.belongsToOne(Cohort, {
+Student.belongsTo(Cohort, {
   foreignKey: 'cohort_id',
 });
 

@@ -1,36 +1,29 @@
 const { Model, DataTypes } = require('sequelize');
+
 const sequelize = require('../config/connection');
 
-class Cohort extends Model {}
+class UserCohort extends Model {}
 
-Cohort.init(
+UserCohort.init(
   {
+    // define columns
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
-    startDate: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
-    graduationDate: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
-    //not needed here, already linked
-    // student_id: {
-    //   type: DataTypes.INTEGER,
-    //   references: {
-    //     model: 'student',
-    //     key: 'id',
-    //   },
-    // },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
         model: 'user',
+        key: 'id',
+      },
+    },
+    cohort_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'cohort',
         key: 'id',
       },
     },
@@ -40,8 +33,8 @@ Cohort.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'cohort',
+    modelName: 'user_cohort',
   }
 );
 
-module.exports = Cohort;
+module.exports = UserCohort;
