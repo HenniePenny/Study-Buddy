@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+const bcrypt = require('bcrypt');
 
 class User extends Model {
   checkPassword(loginPw) {
@@ -39,7 +40,7 @@ User.init(
       },
     },
     isAdmin: {
-      type: sequelize.BOOLEAN,
+      type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
     cohort_id: {

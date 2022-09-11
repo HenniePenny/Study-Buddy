@@ -21,4 +21,4 @@ Student.belongsTo(Cohort, {
   foreignKey: 'cohort_id',
 });
 
-module.exports = { User, Cohort, Student };
+module.exports = { User, Cohort, Student, UserCohort };

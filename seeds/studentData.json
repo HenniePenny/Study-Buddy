@@ -1,0 +1,247 @@
+[
+  {
+    "firstName": "Artemis",
+    "lastName": "Smith",
+    "gender": "FEMALE",
+    "nationality": "Greek",
+    "cohort_id": "1"
+  },
+  {
+    "firstName": "Hermes",
+    "lastName": "Gordon",
+    "gender": "MALE",
+    "nationality": "American",
+    "cohort_id": "1" 
+  },
+  {
+    "firstName": "Oedipus",
+    "lastName": "Dale",
+    "gender": "MALE",
+    "nationality": "German",
+    "cohort_id": "1" 
+  },
+  {
+    "firstName": "Nyx",
+    "lastName": "Cobain",
+    "gender": "FEMALE",
+    "nationality": "Australian",
+    "cohort_id": "1" 
+  },
+  {
+    "firstName": "Epimetheus",
+    "lastName": "Green",
+    "gender": "MALE",
+    "nationality": "Armenian",
+    "cohort_id": "1" 
+  },
+  {
+    "firstName": "Cerberus",
+    "lastName": "Brown",
+    "gender": "FEMALE",
+    "nationality": "Slovakian",
+    "cohort_id": "1" 
+  },
+  {
+    "firstName": "Mentor",
+    "lastName": "Johnson",
+    "gender": "MALE",
+    "nationality": "Estonian",
+    "cohort_id": "1" 
+  },
+  {
+    "firstName": "Pluto",
+    "lastName": "Davis",
+    "gender": "MALE",
+    "nationality": "Ukrainian",
+    "cohort_id": "1" 
+  },
+  {
+    "firstName": "Jason",
+    "lastName": "Williams",
+    "gender": "FEMALE",
+    "nationality": "Spanish",
+    "cohort_id": "1"
+  },
+  {
+    "firstName": "Patroclus",
+    "lastName": "Miller",
+    "gender": "MALE",
+    "nationality": "Indian",
+    "cohort_id": "1"
+  },
+  {
+    "firstName": "Gaia",
+    "lastName": "Iwalani",
+    "gender": "FEMALE",
+    "nationality": "Serbian",
+    "cohort_id": "1" 
+  },
+  {
+    "firstName": "Lei",
+    "lastName": "Kanoa",
+    "gender": "FEMALE",
+    "nationality": "Japanese",
+    "cohort_id": "1" 
+  },
+  {
+    "firstName": "Medea",
+    "lastName": "Pula",
+    "gender": "FEMALE",
+    "nationality": "Polish",
+    "cohort_id": "1" 
+  },
+  {
+    "firstName": "Melpomene",
+    "lastName": "Kalima",
+    "gender": "FEMALE",
+    "nationality": "Canadian",
+    "cohort_id": "1" 
+  },
+  {
+    "firstName": "Andromache",
+    "lastName": "Cox",
+    "gender": "OTHER",
+    "nationality": "Brazilian",
+    "cohort_id": "1" 
+  },
+  {
+    "firstName": "Tethys",
+    "lastName": "Brakus",
+    "gender": "FEMALE",
+    "nationality": "Chinese",
+    "cohort_id": "1" 
+  },
+  {
+    "firstName": "Elle",
+    "lastName": "Ray",
+    "gender": "FEMALE",
+    "nationality": "French",
+    "cohort_id": "1" 
+  },
+  {
+    "firstName": "Euphrosyne",
+    "lastName": "Feest",
+    "gender": "FEMALE",
+    "nationality": "Portugese",
+    "cohort_id": "1" 
+  },
+  {
+    "firstName": "Eros",
+    "lastName": "Lou",
+    "gender": "OTHER",
+    "nationality": "Finnish",
+    "cohort_id": "1" 
+  },
+  {
+    "firstName": "Aegle",
+    "lastName": "Pearce",
+    "gender": "OTHER",
+    "nationality": "Pakistani",
+    "cohort_id": "1" 
+  },
+  {
+    "firstName": "Hebe",
+    "lastName": "Bates",
+    "gender": "FEMALE",
+    "nationality": "Chinese",
+    "cohort_id": "1" 
+  },
+  {
+    "firstName": "Agamemnon",
+    "lastName": "Lee",
+    "gender": "MALE",
+    "nationality": "French",
+    "cohort_id": "1" 
+  },
+  {
+    "firstName": "Philomela",
+    "lastName": "Burdzy",
+    "gender": "OTHER",
+    "nationality": "Portugese",
+    "cohort_id": "1" 
+  },
+  {
+    "firstName": "Uranus",
+    "lastName": "Mendoza",
+    "gender": "MALE",
+    "nationality": "Finnish",
+    "cohort_id": "1"
+  },
+  {
+    "firstName": "Phoebus",
+    "lastName": "Bhiladvala",
+    "gender": "FEMALE",
+    "nationality": "Pakistani",
+    "cohort_id": "1" 
+  },
+  {
+    "firstName": "Zeus",
+    "lastName": "Bardsley",
+    "gender": "MALE",
+    "nationality": "American",
+    "cohort_id": "1" 
+  },
+  {
+    "firstName": "Andromeda",
+    "lastName": "Hilton",
+    "gender": "MALE",
+    "nationality": "French",
+    "cohort_id": "1" 
+  },
+  {
+    "firstName": "Apollo",
+    "lastName": "Grogger",
+    "gender": "OTHER",
+    "nationality": "Portugese",
+    "cohort_id": "1" 
+  },
+  {
+    "firstName": "Ilithyia",
+    "lastName": "Pincus",
+    "gender": "FEMALE",
+    "nationality": "Finnish",
+    "cohort_id": "1" 
+  },
+  {
+    "firstName": "Daphne",
+    "lastName": "Goethe",
+    "gender": "FEMALE",
+    "nationality": "Pakistani",
+    "cohort_id": "1" 
+  },
+  {
+    "firstName": "Hippolytos",
+    "lastName": "Ascolani",
+    "gender": "MALE",
+    "nationality": "American",
+    "cohort_id": "1" 
+  },
+  {
+    "firstName": "Phaedra",
+    "lastName": "Welther",
+    "gender": "FEMALE",
+    "nationality": "French",
+    "cohort_id": "1"
+  },
+  {
+    "firstName": "Melanthios",
+    "lastName": "Schinaia",
+    "gender": "OTHER",
+    "nationality": "Portugese",
+    "cohort_id": "1"
+  },
+  {
+    "firstName": "Iacchus",
+    "lastName": "Frosini",
+    "gender": "sMALE",
+    "nationality": "Finnish",
+    "cohort_id": "1" 
+  },
+  {
+    "firstName": "Polyxena",
+    "lastName": "Federici",
+    "gender": "FEMALE",
+    "nationality": "Pakistani",
+    "cohort_id": "1" 
+  }
+]
