@@ -730,7 +730,7 @@
   {
     "firstName": "Polyxena",
     "lastName": "Federici",
-    "gender": "FEMALE",
+    "gender": "MALE",
     "nationality": "Pakistani",
     "cohort_id": "3" 
   },
@@ -976,7 +976,7 @@
     "firstName": "Polyxena",
     "lastName": "Federici",
     "gender": "FEMALE",
-    "nationality": "Pakistani",
+    "nationality": "Spanish",
     "cohort_id": "4" 
   }
 ]
