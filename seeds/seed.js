@@ -23,26 +23,26 @@ const seedDatabase = async () => {
     returning: true,
   });
 
-  for (const cohort of cohortData) {
-    await cohort.create({
-      ...cohort,
-      user_id: users[Math.floor(Math.random() * users.length)].id,
-    });
-  }
+  // for (const cohort of cohortData) {
+  //   await cohort.create({
+  //     ...cohort,
+  //     user_id: users[Math.floor(Math.random() * users.length)].id,
+  //   });
+  // }
 
-  for (const student of studentData) {
-    await student.create({
-      ...student,
-      cohort_id: students[Math.floor(Math.random() * students.length)].id,
-    });
-  }
+  // for (const student of studentData) {
+  //   await student.create({
+  //     ...student,
+  //     cohort_id: students[Math.floor(Math.random() * students.length)].id,
+  //   });
+  // }
 
-  for (const user of userData) {
-    await user.create({
-      ...user,
-      cohort_id: cohorts[Math.floor(Math.random() * cohorts.length)].id,
-    });
-  }
+  // for (const user of userData) {
+  //   await user.create({
+  //     ...user,
+  //     cohort_id: cohorts[Math.floor(Math.random() * cohorts.length)].id,
+  //   });
+  // }
 
   process.exit(0);
 };

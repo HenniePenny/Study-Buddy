@@ -2,16 +2,18 @@ const User = require('./User');
 const Cohort = require('./Cohort');
 const Student = require('./Student');
 
-User.belongsToMany(Cohort, {
+User.hasMany(Cohort, {
   foreignKey: 'user_id',
+  onDelete: 'CASCADE'
 });
 
 Cohort.belongsTo(User, {
-  foreignKey: 'cohort_id',
+  foreignKey: 'user_id',
 });
 
 Cohort.hasMany(Student, {
   foreignKey: 'cohort_id',
+  onDelete: 'CASCADE'
 });
 
 Student.belongsTo(Cohort, {
