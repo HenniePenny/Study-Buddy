@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Student extends Model {}
+class Group extends Model {}
 
-Student.init(
+Group.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,24 +11,17 @@ Student.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    firstName: {
-      type: DataTypes.STRING,
+
+    group_number: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
-    lastName: {
-      type: DataTypes.STRING,
+
+    projetc_number: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
-    gender: {
-      type: DataTypes.STRING,
-      validate: {
-        isIn: [['FEMALE', 'MALE', 'OTHER']],
-      },
-    },
-    nationality: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+
     cohort_id: {
       type: DataTypes.INTEGER,
       references: {
@@ -36,15 +29,14 @@ Student.init(
         key: 'id',
       },
     },
-
   },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'student',
+    modelName: 'group',
   }
 );
 
-module.exports = Student;
+module.exports = Group;

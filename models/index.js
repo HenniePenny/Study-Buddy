@@ -1,6 +1,7 @@
 const User = require('./User');
 const Cohort = require('./Cohort');
 const Student = require('./Student');
+const Group = require('./Group');
 
 User.hasMany(Cohort, {
   foreignKey: 'user_id',
@@ -19,5 +20,6 @@ Cohort.hasMany(Student, {
 Student.belongsTo(Cohort, {
   foreignKey: 'cohort_id',
 });
+
 
 module.exports = { User, Cohort, Student };
