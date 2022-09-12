@@ -1,10 +1,9 @@
 const sequelize = require('../config/connection');
-const { Cohort, User, Student, UserCohort } = require('../models');
+const { Cohort, User, Student } = require('../models');
 
 const userData = require('./userData.json');
 const cohortData = require('./cohortData.json');
 const studentData = require('./studentData.json');
-const userCohortData = require('./userCohortData.json');
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
@@ -20,11 +19,6 @@ const seedDatabase = async () => {
   });
 
   const students = await Student.bulkCreate(studentData, {
-    individualHooks: true,
-    returning: true,
-  });
-
-  const userCohorts = await UserCohort.bulkCreate(userCohortData, {
     individualHooks: true,
     returning: true,
   });
@@ -47,14 +41,6 @@ const seedDatabase = async () => {
     await user.create({
       ...user,
       cohort_id: cohorts[Math.floor(Math.random() * cohorts.length)].id,
-    });
-  }
-
-  for (const userCohort of userCohortData) {
-    await userCohort.create({
-      ...userCohort,
-      user_id: userCohorts[Math.floor(Math.random() * userCohorts.length)].id,
-      cohort_id: userCohorts[Math.floor(Math.random() * userCohorts.length)].id,
     });
   }
 

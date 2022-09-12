@@ -4,31 +4,27 @@
     "lastName": "Kressner",
     "email": "h.kressner@hotmail.de",
     "password": "passwordHen",
-    "isAdmin": true,
-    "cohort_id": 1
+    "isAdmin": true
   },
   {
     "firstName": "Tammi",
     "lastName": "Coles",
     "email": "tammi.coles@esmt.org",
     "password": "passwordTam",
-    "isAdmin": true,
-    "cohort_id": 1
+    "isAdmin": true
   },
   {
     "firstName": "Tornike",
     "lastName": "Japaridze",
     "email": "torniqe@gmail.com",
     "password": "passwordTor",
-    "isAdmin": true,
-    "cohort_id": 1
+    "isAdmin": true
   },
   {
     "firstName": "Pri",
     "lastName": "Chauhan",
     "email": "prikshitthakur0@gmail.com",
     "password": "passwordHPri",
-    "isAdmin": true,
-    "cohort_id": 1
+    "isAdmin": true
   }
 ]

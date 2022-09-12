@@ -43,26 +43,31 @@ User.init(
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
-    cohort_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'cohort',
-        key: 'id',
-      },
-    },
   },
   {
     hooks: {
       beforeCreate: async (newUserData) => {
-        newUserData.password = await bcrypt.hash(newUserData.password, 10);
-        return newUserData;
+        try {
+          newUserData.password = await bcrypt.hash(newUserData.password, 10);
+          return newUserData;
+        } catch (err) {
+          console.log(err);
+          return err;
+        }
       },
       beforeUpdate: async (updatedUserData) => {
-        updatedUserData.password = await bcrypt.hash(
-          updatedUserData.password,
-          10
-        );
-        return updatedUserData;
+        try {
+          if (updatedUserData.password) {
+            updatedUserData.password = await bcrypt.hash(
+              updatedUserData.password,
+              10
+            );
+          }
+          return updatedUserData;
+        } catch (err) {
+          console.log(err);
+          return err;
+        }
       },
     },
     sequelize,
