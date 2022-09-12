@@ -1,25 +1,27 @@
 const { Model, DataTypes } = require('sequelize');
-
 const sequelize = require('../config/connection');
 
-class UserCohort extends Model {}
+class Group extends Model {}
 
-UserCohort.init(
+Group.init(
   {
-    // define columns
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
-    user_id: {
+
+    group_number: {
       type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id',
-      },
+      allowNull: false,
     },
+
+    projetc_number: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+
     cohort_id: {
       type: DataTypes.INTEGER,
       references: {
@@ -33,8 +35,8 @@ UserCohort.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'user_cohort',
+    modelName: 'group',
   }
 );
 
-module.exports = UserCohort;
+module.exports = Group;

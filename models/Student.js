@@ -36,6 +36,7 @@ Student.init(
         key: 'id',
       },
     },
+
   },
   {
     sequelize,
