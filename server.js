@@ -1,7 +1,7 @@
-const AdminJS = require('adminjs');
-const AdminJSExpress = require('@adminjs/express');
-const AdminJSSequelize = require('@adminjs/sequelize');
-AdminJS.registerAdapter(AdminJSSequelize);
+// const AdminJS = require('adminjs');
+// const AdminJSExpress = require('@adminjs/express');
+// const AdminJSSequelize = require('@adminjs/sequelize');
+// AdminJS.registerAdapter(AdminJSSequelize);
 
 const path = require('path');
 const express = require('express');
