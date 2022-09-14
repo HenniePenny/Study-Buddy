@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-// const AdminJS = require('adminjs');
-// const AdminJSExpress = require('@adminjs/express');
-// const AdminJSSequelize = require('@adminjs/sequelize');
-// AdminJS.registerAdapter(AdminJSSequelize);
-
-=======
->>>>>>> main
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
