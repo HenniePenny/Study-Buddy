@@ -9,7 +9,8 @@ router.get('/login', (req, res) => {
     return;
   }
 
-  res.render('login');
+  // res.render('login');
+  res.json('this will be the login page')
 });
 
 module.exports = router;
