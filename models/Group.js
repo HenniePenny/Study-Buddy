@@ -17,7 +17,7 @@ Group.init(
       allowNull: false,
     },
 
-    projetc_number: {
+    project_number: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
