@@ -22,7 +22,6 @@
   "homepage": "https://github.com/HenniePenny/Study-Buddy#readme",
   "dependencies": {
     "admin-lte": "^3.2.0",
-    "adminjs": "^6.2.3",
     "bcrypt": "^5.0.1",
     "connect-session-sequelize": "^7.1.5",
     "dotenv": "^16.0.2",
