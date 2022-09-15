@@ -1,6 +1,6 @@
 const router = require('express').Router();
-// const { User } = require('../models');
-// const withAuth = require('../utils/auth');
+const { User } = require('../models');
+const withAuth = require('../utils/auth');
 
 //this route will serve the user dashboard based on type of logged in user
 router.get('/', async (req, res) => {
@@ -14,7 +14,8 @@ router.get('/login', (req, res) => {
     return;
   }
 
-  res.render('login');
+  // res.render('login');
+  res.json('this will be the login page');
 });
 
 module.exports = router;
