@@ -67,22 +67,29 @@ router.delete('/:userId', async (req, res) => {
 });
 
 // Find all cohort with userId
-// router.get('/cohort/:userId', async (req, res) => {
-//   try {
-//     const cohortData = await Cohort.findAll({
-//       where: { user_id: req.body.user_id },
-//     });
+router.get('/cohort/:userId', async (req, res) => {
+  try {
+    const cohortData = await Cohort.findAll({
+      // attributes: { exclude: ['password'] },
+      // order: [['firstName', 'ASC']],
+      // where: {
+      //   id: req.params.id,
+      //   user_id: req.session.user_id,
+      // },
+    });
 
-//     if (!cohortData) {
-//       res.status(400).json({ message: 'Incorrect ID, please try again' });
-//       return;
-//     }
-//     const users = userData.map((project) => project.get({ plain: true }));
-//     res.json(users);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+    if (!cohortData) {
+      res
+        .status(404)
+        .json({ message: 'Cohort does not exists, please try again' });
+      return;
+    }
+    const cohorts = cohortData.map((project) => project.get({ plain: true }));
+    res.json(cohorts);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 // Login
 router.post('/login', async (req, res) => {
