@@ -43,12 +43,27 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Get details of a single cohort
+// Get details of a single cohort (not done)
 router.get('/:cohortId', withAuth, async (req, res) => {
-  res.json('details of a single  cohort');
+  try {
+    const cohortData = await Cohort.findOne({
+      where: { id: req.body.cohortd }
+    });
+
+    if (!cohortData) {
+      res
+        .status(404)
+        .json({ message: 'User does not exists, please try again' });
+      return;
+    }
+    const cohorts = cohortData.map((project) => project.get({ plain: true }));
+    res.json(cohorts);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
-// Add Multiple students to cohort
+// Add Multiple students to cohort (not done)
 router.post('/:cohortId/add-students', withAuth, async (req, res) => {
   res.json('Add Multiple students to cohort');
 });
