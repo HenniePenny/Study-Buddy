@@ -21,11 +21,7 @@ router.get('/', async (req, res) => {
       return;
     }
     const cohorts = cohortData.map((project) => project.get({ plain: true }));
-<<<<<<< HEAD
-    res.render('cohorts-list');
-=======
     res.json(cohorts);
->>>>>>> main
   } catch (err) {
     res.status(500).json(err);
   }
