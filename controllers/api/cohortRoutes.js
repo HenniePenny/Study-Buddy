@@ -64,8 +64,19 @@ router.get('/:cohortId',  async (req, res) => {
 });
 
 // Add Multiple students to cohort (not done)
-router.post('/:cohortId/add-students', withAuth, async (req, res) => {
-  res.json('Add Multiple students to cohort');
+router.post('/:cohortId/add-students', async (req, res) => {
+  try {
+    const studentData = await Student.create(req.body);
+
+    req.session.save(() => {
+      req.session.cohort_id = studentData.id;
+      req.session.logged_in = true;
+
+      res.status(200).json(studentData);
+    });
+  } catch (err) {
+    res.status(400).json(err);
+  }
 });
 
 // Delete a new cohort (Done)

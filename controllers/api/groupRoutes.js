@@ -6,7 +6,7 @@ const { Group } = require('../../models/');
 const withAuth = require('../../utils/auth');
 
 // Get groups for a given Cohorts (not done)
-router.get('/:cohortId', withAuth, async (req, res) => {
+router.get('/:cohortId', async (req, res) => {
   try {
     const groupData = await Group.findAll({
       order: [['group_number', 'ASC']],
@@ -15,7 +15,7 @@ router.get('/:cohortId', withAuth, async (req, res) => {
     if (!groupData) {
       res
         .status(404)
-        .json({ message: 'User does not exists, please try again' });
+        .json({ message: 'Group does not exists, please try again' });
       return;
     }
     const groups = groupData.map((project) => project.get({ plain: true }));
