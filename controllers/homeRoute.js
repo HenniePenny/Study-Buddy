@@ -11,8 +11,8 @@ router.get('/program-managers', async (req, res) => {
 
     const users = userData.map((project) => project.get({ plain: true }));
 
-    console.log(users)
-    res.json(users)
+    console.log(users);
+    res.json(users);
     // res.render('program-manager-layout', {
     //   users,
 
@@ -36,7 +36,6 @@ router.get('/login', (req, res) => {
 
   // res.render('login');
   res.json('this will be the login page');
-
 });
 
 module.exports = router;
