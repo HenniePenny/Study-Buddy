@@ -43,11 +43,11 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Get details of a single cohort (not done)
-router.get('/:cohortId', withAuth, async (req, res) => {
+// Get details of a single cohort (done)
+router.get('/:cohortId',  async (req, res) => {
   try {
-    const cohortData = await Cohort.findOne({
-      where: { id: req.body.cohortd }
+    const cohortData = await Cohort.findAll({
+      where: { id: req.params.cohortId }
     });
 
     if (!cohortData) {

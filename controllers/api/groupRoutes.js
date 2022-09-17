@@ -5,9 +5,24 @@ const router = require('express').Router();
 const { Group } = require('../../models/');
 const withAuth = require('../../utils/auth');
 
-// Get groups for a given Cohorts
+// Get groups for a given Cohorts (not done)
 router.get('/:cohortId', withAuth, async (req, res) => {
-  res.json('groups for a given Cohorts');
+  try {
+    const groupData = await Group.findAll({
+      order: [['group_number', 'ASC']],
+    });
+
+    if (!groupData) {
+      res
+        .status(404)
+        .json({ message: 'User does not exists, please try again' });
+      return;
+    }
+    const groups = groupData.map((project) => project.get({ plain: true }));
+    res.json(groups);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 // Create a group (not done)
