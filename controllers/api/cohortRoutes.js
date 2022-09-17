@@ -7,9 +7,24 @@ const router = require('express').Router();
 const { Cohort, Student } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// Get All Cohorts
-router.get('/', withAuth, async (req, res) => {
-  res.json('this route gives all cohort');
+// Get All Cohorts (Done)
+router.get('/', async (req, res) => {
+  try {
+    const cohortData = await Cohort.findAll({
+      order: [['startDate', 'ASC']],
+    });
+
+    if (!cohortData) {
+      res
+        .status(404)
+        .json({ message: 'User does not exists, please try again' });
+      return;
+    }
+    const cohorts = cohortData.map((project) => project.get({ plain: true }));
+    res.render('cohorts-list');
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 // Add a new cohort
