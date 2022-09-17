@@ -34,7 +34,7 @@
     <ul class="navbar-nav ml-auto">
       <!-- Logout nav -->
       <li class="nav-item">
-        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+        <a class="nav-link" data-widget="navbar-search" href="/api/users/logout" role="button">
           <i class="fas fa-sign-out-alt"></i>
           Logout
         </a>
@@ -48,7 +48,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="./index.html" class="brand-link">
+    <a href="/" class="brand-link">
       <img src="/assets/logos/study-buddy-logo.png" alt="Study Buddy Logo" class="brand-image">
       <span class="brand-text font-weight-light">Study Buddy</span>
     </a>
@@ -61,7 +61,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="./index.html" class="nav-link">
+            <a href="/" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -78,25 +78,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../html/all-cohorts.html" class="nav-link">
+                <a href="/api/cohorts" class="nav-link">
                   <i class="far fa-circle nav-icon text-info"></i>
                   <p>View all cohorts</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../html/my-cohorts.html" class="nav-link">
-                  <i class="far fa-circle nav-icon text-info"></i>
-                  <p>View my cohort</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../html/add-cohort.html" class="nav-link">
+                <a href="/api/cohorts" class="nav-link">
                   <i class="far fa-circle nav-icon text-info"></i>
                   <p>Add a cohort</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../html/delete-cohort.html" class="nav-link">
+                <a href="/api/cohorts/:cohortId" class="nav-link">
                   <i class="far fa-circle nav-icon text-danger"></i>
                   <p>Delete a cohort</p>
                 </a>
@@ -113,19 +107,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../html/all-managers.html" class="nav-link">
+                <a href="/api/users" class="nav-link">
                   <i class="far fa-circle nav-icon text-info"></i>
                   <p>View all managers</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../html/add-manager.html" class="nav-link">
+                <a href="/api/users" class="nav-link">
                   <i class="far fa-circle nav-icon text-info"></i>
                   <p>Add manager</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../html/delete-manager.html" class="nav-link">
+                <a href="/api/users/:userId" class="nav-link">
                   <i class="far fa-circle nav-icon text-danger"></i>
                   <p>Delete manager</p>
                 </a>
