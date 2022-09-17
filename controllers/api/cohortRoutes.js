@@ -20,8 +20,8 @@ router.get('/', async (req, res) => {
         .json({ message: 'User does not exists, please try again' });
       return;
     }
-    const cohorts = cohortData.map((project) => project.get({ plain: true }));
-    res.json(cohorts);
+    // const cohorts = cohortData.map((project) => project.get({ plain: true }));
+    res.render('cohorts-list');
   } catch (err) {
     res.status(500).json(err);
   }
