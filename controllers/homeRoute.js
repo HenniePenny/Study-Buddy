@@ -21,6 +21,9 @@ router.get('/program-managers', async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
+//this route will serve the user dashboard based on type of logged in user
+router.get('/', async (req, res) => {
+  res.render('dashboard');
 });
 
 router.get('/login', (req, res) => {
@@ -31,7 +34,7 @@ router.get('/login', (req, res) => {
   }
 
   // res.render('login');
-  res.json('this will be the login page')
+  res.json('this will be the login page');
 });
 
 module.exports = router;
