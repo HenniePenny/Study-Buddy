@@ -1,14 +1,35 @@
-// For user routes 
+// For user routes
 // List all the users findall except the current user (Name, email, program)
 // Add a user
 // Delete a user
-// login 
+// login
 // logout
 // find all cohort for given userid (:userId)
 
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Cohort } = require('../../models');
 const withAuth = require('../../utils/auth');
+
+// List all users (Name, email)
+router.get('/', async (req, res) => {
+  try {
+    const userData = await User.findAll({
+      attributes: { exclude: ['password'] },
+      order: [['firstName', 'ASC']],
+    });
+
+    if (!userData) {
+      res
+        .status(404)
+        .json({ message: 'User does not exists, please try again' });
+      return;
+    }
+    const users = userData.map((project) => project.get({ plain: true }));
+    res.json(users);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 // Create a user
 router.post('/', async (req, res) => {
@@ -26,17 +47,16 @@ router.post('/', async (req, res) => {
   }
 });
 
-
 // Delete a user
-router.delete('/', withAuth, async (req, res) => {
+router.delete('/:userId', async (req, res) => {
   try {
     const userData = await User.destroy({
       where: {
-        id: req.params.id,
+        id: req.params.userId,
       },
     });
 
-    if (userData > 0) {
+    if (userData) {
       res.status(200).end();
     } else {
       res.status(404).end();
@@ -47,8 +67,28 @@ router.delete('/', withAuth, async (req, res) => {
 });
 
 // Find all cohort with userId
-router.get('/', withAuth, async (req, res) => {
- 
+router.get('/cohort/:userId', async (req, res) => {
+  try {
+    const cohortData = await Cohort.findAll({
+      // attributes: { exclude: ['password'] },
+      // order: [['firstName', 'ASC']],
+      // where: {
+      //   id: req.params.id,
+      //   user_id: req.session.user_id,
+      // },
+    });
+
+    if (!cohortData) {
+      res
+        .status(404)
+        .json({ message: 'Cohort does not exists, please try again' });
+      return;
+    }
+    const cohorts = cohortData.map((project) => project.get({ plain: true }));
+    res.json(cohorts);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 // Login
@@ -94,7 +134,4 @@ router.post('/logout', (req, res) => {
   }
 });
 
-
-
 module.exports = router;
-
