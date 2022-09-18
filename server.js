@@ -33,7 +33,7 @@ const sess = {
   }),
 };
 
-generateGroups(myStudents, 10);
+generateGroups(myStudents, 6);
 
 app.use(session(sess));
 

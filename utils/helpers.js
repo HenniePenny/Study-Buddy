@@ -62,7 +62,7 @@ const generateGroups = (students, groupSize) => {
     }
   });
 
-  // console.log(distributedGroups);
+  console.log(distributedGroups);
   return distributedGroups;
 };
 
