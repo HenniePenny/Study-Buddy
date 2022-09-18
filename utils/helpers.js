@@ -36,6 +36,19 @@ const generateGroups = (students, groupSize) => {
     }
   });
 
+  const halfGroupSize = groupSize / 2;
+  Object.keys(gender_counter).forEach((group) => {
+    if (gender_counter[group]['MALE'] === groupSize) {
+      console.log('All male', group);
+    }
+    if (gender_counter[group]['FEMALE'] === groupSize) {
+      console.log('All female', group);
+    }
+    if (gender_counter[group]['OTHER'] === groupSize) {
+      console.log('All other', group);
+    }
+  });
+
   // console.log(distributedGroups);
   return distributedGroups;
 };
