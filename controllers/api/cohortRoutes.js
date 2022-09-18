@@ -17,11 +17,12 @@ router.get('/', async (req, res) => {
     if (!cohortData) {
       res
         .status(404)
-        .json({ message: 'User does not exists, please try again' });
+        .json({ message: 'Cohort does not exists, please try again' });
       return;
     }
     // const cohorts = cohortData.map((project) => project.get({ plain: true }));
-    res.render('cohorts-list');
+    // res.json(cohorts)
+    res.render('cohorts-list', {cohortData});
   } catch (err) {
     res.status(500).json(err);
   }
@@ -32,32 +33,32 @@ router.post('/', async (req, res) => {
   try {
     const cohortData = await Cohort.create(req.body);
 
-    req.session.save(() => {
-      req.session.user_id = cohortData.id;
-      req.session.logged_in = true;
+    // req.session.save(() => {
+    //   req.session.user_id = cohortData.id;
+    //   req.session.logged_in = true;
 
       res.status(200).json(cohortData);
-    });
+    // });
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
 // Get details of a single cohort (done)
-router.get('/:cohortId',  async (req, res) => {
+router.get('/:cohortId', async (req, res) => {
   try {
     const cohortData = await Cohort.findAll({
-      where: { id: req.params.cohortId }
+      where: { id: req.params.cohortId },
     });
 
     if (!cohortData) {
       res
         .status(404)
-        .json({ message: 'User does not exists, please try again' });
+        .json({ message: 'Cohort does not exists, please try again' });
       return;
     }
-    const cohorts = cohortData.map((project) => project.get({ plain: true }));
-    res.json(cohorts);
+    const cohorts = cohortData.map((project) => project.get({ plain: true })); //commment out this line after handlebars are complete
+    res.json(cohorts) // Change to render handlebars page (res.render('cohort '))
   } catch (err) {
     res.status(500).json(err);
   }
@@ -65,17 +66,27 @@ router.get('/:cohortId',  async (req, res) => {
 
 // Add Multiple students to cohort (not done)
 router.post('/:cohortId/add-students', async (req, res) => {
+  console.log(req.body)
   try {
-    const studentData = await Student.create(req.body);
+    const cohortId = req.params.cohortId;
+    console.log(cohortId);
 
-    req.session.save(() => {
-      req.session.cohort_id = studentData.id;
-      req.session.logged_in = true;
+    const studentDataWithCohortId = req.body.map((student) => {
+      student.cohort_id = parseInt(cohortId);
+      return student;
+    } );
+
+    console.log(studentDataWithCohortId)
+    const studentData = await Student.bulkCreate(studentDataWithCohortId);
+    console.log(5)
+    // req.session.save(() => {
+    //   req.session.cohort_id = studentData.id;
+      // req.session.logged_in = true;
 
       res.status(200).json(studentData);
-    });
+    // });
   } catch (err) {
-    res.status(400).json(err);
+    res.status(500).json(err);
   }
 });
 
