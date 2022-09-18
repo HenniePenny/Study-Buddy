@@ -24,8 +24,8 @@ router.get('/', async (req, res) => {
         .json({ message: 'User does not exists, please try again' });
       return;
     }
-    const users = userData.map((project) => project.get({ plain: true }));
-    res.render('pms-list');
+    // const users = userData.map((project) => project.get({ plain: true }));
+    res.render('pms-list', {userData});
   } catch (err) {
     res.status(500).json(err);
   }
@@ -36,12 +36,12 @@ router.post('/', async (req, res) => {
   try {
     const userData = await User.create(req.body);
 
-    req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.logged_in = true;
+    // req.session.save(() => {
+    //   req.session.user_id = userData.id;
+    //   req.session.logged_in = true;
 
       res.status(200).json(userData);
-    });
+    // });
   } catch (err) {
     res.status(400).json(err);
   }
@@ -112,7 +112,7 @@ router.post('/login', async (req, res) => {
       return;
     }
 
-    req.session.save(() => {
+      req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
 
