@@ -58,7 +58,7 @@ router.get('/:cohortId', async (req, res) => {
       return;
     }
     // const cohorts = cohortData.map((project) => project.get({ plain: true })); //commment out this line after handlebars are complete
-    res.render('cohorts-list', {cohortData}) // Change to render handlebars page (res.render('cohort '))
+    res.render('cohort', {cohortData}) // Change to render handlebars page (res.render('cohort '))
   } catch (err) {
     res.status(500).json(err);
   }
