@@ -36,11 +36,19 @@ router.post('/', async (req, res) => {
     // req.session.save(() => {
     //   req.session.user_id = cohortData.id;
     //   req.session.logged_in = true;
-
       res.status(200).json(cohortData);
     // });
   } catch (err) {
     res.status(400).json(err);
+  }
+});
+
+// Upload a cohort
+router.get('/upload', async (req, res) => {
+  try {
+    res.render('add-cohort');
+  } catch (error) {
+    res.status(500).json(err);
   }
 });
 
