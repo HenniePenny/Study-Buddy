@@ -8,6 +8,9 @@ const helpers = require('./utils/helpers');
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
+const generateGroups = require('./utils/helpers');
+const myStudents = require('./seeds/studentData.json');
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -29,6 +32,8 @@ const sess = {
     db: sequelize,
   }),
 };
+
+generateGroups(myStudents, 10);
 
 app.use(session(sess));
 
