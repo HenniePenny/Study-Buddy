@@ -57,19 +57,19 @@ router.get('/:cohortId', async (req, res) => {
         .json({ message: 'Cohort does not exists, please try again' });
       return;
     }
-    const cohorts = cohortData.map((project) => project.get({ plain: true })); //commment out this line after handlebars are complete
-    res.json(cohorts) // Change to render handlebars page (res.render('cohort '))
+    // const cohorts = cohortData.map((project) => project.get({ plain: true })); //commment out this line after handlebars are complete
+    res.render('cohorts-list', {cohortData}) // Change to render handlebars page (res.render('cohort '))
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-// Add Multiple students to cohort (not done)
+// Add Multiple students to cohort (done)
 router.post('/:cohortId/add-students', async (req, res) => {
   console.log(req.body)
   try {
     const cohortId = req.params.cohortId;
-    console.log(cohortId);
+    // console.log(cohortId);
 
     const studentDataWithCohortId = req.body.map((student) => {
       student.cohort_id = parseInt(cohortId);
@@ -78,7 +78,7 @@ router.post('/:cohortId/add-students', async (req, res) => {
 
     console.log(studentDataWithCohortId)
     const studentData = await Student.bulkCreate(studentDataWithCohortId);
-    console.log(5)
+    // console.log(5)
     // req.session.save(() => {
     //   req.session.cohort_id = studentData.id;
       // req.session.logged_in = true;

@@ -11,13 +11,13 @@ router.get('/program-managers', async (req, res) => {
 
     const users = userData.map((project) => project.get({ plain: true }));
 
-    console.log(users)
-    res.json(users)
-    // res.render('program-manager-layout', {
-    //   users,
+    // console.log(users)
+    // res.json(users)
+    res.render('pms-list', {
+      users,
 
-    //   logged_in: req.session.logged_in,
-    // });
+      logged_in: req.session.logged_in,
+    });
   } catch (err) {
     res.status(500).json(err);
   }

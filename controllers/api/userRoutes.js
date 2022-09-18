@@ -24,8 +24,8 @@ router.get('/', async (req, res) => {
         .json({ message: 'User does not exists, please try again' });
       return;
     }
-    const users = userData.map((project) => project.get({ plain: true }));
-    res.render('pms-list');
+    // const users = userData.map((project) => project.get({ plain: true }));
+    res.render('pms-list', {userData});
   } catch (err) {
     res.status(500).json(err);
   }
