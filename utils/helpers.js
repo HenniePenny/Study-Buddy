@@ -22,6 +22,20 @@ const generateGroups = (students, groupSize) => {
     };
   });
 
+  const gender_counter = {};
+  // populate group numbers with their gender count
+  distributedGroups.forEach((el) => {
+    if (gender_counter[el.group_number]) {
+      if (gender_counter[el.group_number][el.gender]) {
+        gender_counter[el.group_number][el.gender]++;
+      } else {
+        gender_counter[el.group_number][el.gender] = 1;
+      }
+    } else {
+      gender_counter[el.group_number] = { [el.gender]: 1 };
+    }
+  });
+
   // console.log(distributedGroups);
   return distributedGroups;
 };
