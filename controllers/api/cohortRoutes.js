@@ -21,7 +21,8 @@ router.get('/', async (req, res) => {
       return;
     }
     // const cohorts = cohortData.map((project) => project.get({ plain: true }));
-    res.render('cohorts-list');
+
+    res.render('cohorts-list', { cohortData });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -44,10 +45,10 @@ router.post('/', async (req, res) => {
 });
 
 // Get details of a single cohort (done)
-router.get('/:cohortId',  async (req, res) => {
+router.get('/:cohortId', async (req, res) => {
   try {
     const cohortData = await Cohort.findAll({
-      where: { id: req.params.cohortId }
+      where: { id: req.params.cohortId },
     });
 
     if (!cohortData) {
