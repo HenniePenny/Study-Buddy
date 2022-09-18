@@ -36,6 +36,7 @@ const generateGroups = (students, groupSize) => {
     }
   });
 
+  // check if there are groups that only contain members of one gender
   const halfGroupSize = groupSize / 2;
   Object.keys(gender_counter).forEach((group) => {
     if (gender_counter[group]['MALE'] === groupSize) {
