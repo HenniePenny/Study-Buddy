@@ -6,22 +6,24 @@ const { Student } = require('../../models/');
 const withAuth = require('../../utils/auth');
 
 // Add a student to a given Cohort (done)
+// Not needed in MVP
 router.post('/', async (req, res) => {
   try {
     const studentData = await Student.create(req.body);
 
-    req.session.save(() => {
-      req.session.cohort_id = studentData.id;
-      req.session.logged_in = true;
+    // req.session.save(() => {
+    //   req.session.cohort_id = studentData.id;
+    //   req.session.logged_in = true;
 
       res.status(200).json(studentData);
-    });
+    // });
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
 // Delete a student (done)
+// Not needed in MVP
 router.delete('/:studentId', async (req, res) => {
   try {
     const studentData = await Student.destroy({
