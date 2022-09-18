@@ -47,6 +47,17 @@ const generateGroups = (students, groupSize) => {
     if (gender_counter[group]['OTHER'] === groupSize) {
       console.log('All other', group);
     }
+
+    // flag
+    if (gender_counter[group]['MALE'] >= halfGroupSize) {
+      console.log('Majority male', group);
+    }
+    if (gender_counter[group]['FEMALE'] >= halfGroupSize) {
+      console.log('Majority female', group);
+    }
+    if (gender_counter[group]['OTHER'] >= halfGroupSize) {
+      console.log('Majority other', group);
+    }
   });
 
   // console.log(distributedGroups);
