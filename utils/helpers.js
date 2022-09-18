@@ -5,6 +5,7 @@ const generateGroups = (students, groupSize) => {
   // console.log('numberOfGroups', numberOfGroups);
 
   // const shuffledArray = students.sort(() => Math.random() - 0.5);
+  // check that no group member of the same nationality is added to the same group in a row
   const shuffledArray = students.sort((a, b) =>
     a.nationality > b.nationality ? 1 : -1
   );
@@ -49,7 +50,7 @@ const generateGroups = (students, groupSize) => {
       console.log('All other', group);
     }
 
-    // flag
+    // check if any of the genders make up more than the majority of any group
     if (gender_counter[group]['MALE'] >= halfGroupSize) {
       console.log('Majority male', group);
     }
