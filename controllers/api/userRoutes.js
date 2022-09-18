@@ -25,7 +25,7 @@ router.get('/', withAuth, async (req, res) => {
       return;
     }
     // const users = userData.map((project) => project.get({ plain: true }));
-    res.render('pms-list', {userData});
+    res.render('pms-list', { userData });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -40,7 +40,7 @@ router.post('/', withAuth, async (req, res) => {
     //   req.session.user_id = userData.id;
     //   req.session.logged_in = true;
 
-      res.status(200).json(userData);
+    res.status(200).json(userData);
     // });
   } catch (err) {
     res.status(400).json(err);
@@ -94,8 +94,8 @@ router.get('/cohort/:userId', withAuth, async (req, res) => {
 // Login
 router.post('/login', async (req, res) => {
   try {
+    console.log(req.body)
     const userData = await User.findOne({ where: { email: req.body.email } });
-    console.log(userData)
     if (!userData) {
       res
         .status(400)
@@ -104,8 +104,8 @@ router.post('/login', async (req, res) => {
     }
 
     const validPassword = await userData.checkPassword(req.body.password);
-    console.log(validPassword)
-    console.log(67)
+    console.log(validPassword);
+
     if (!validPassword) {
       res
         .status(400)
@@ -113,13 +113,15 @@ router.post('/login', async (req, res) => {
       return;
     }
 
-      req.session.save(() => {
+    req.session.save(() => {
       req.session.user_id = userData.id;
+      req.session.email = userData.email;
       req.session.logged_in = true;
 
       res.json({ user: userData, message: 'You are now logged in!' });
     });
   } catch (err) {
+    console.log(err)
     res.status(500).json(err);
   }
 });

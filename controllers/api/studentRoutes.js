@@ -7,7 +7,7 @@ const withAuth = require('../../utils/auth');
 
 // Add a student to a given Cohort (done)
 // Not needed in MVP
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     const studentData = await Student.create(req.body);
 
@@ -24,7 +24,7 @@ router.post('/', async (req, res) => {
 
 // Delete a student (done)
 // Not needed in MVP
-router.delete('/:studentId', async (req, res) => {
+router.delete('/:studentId', withAuth, async (req, res) => {
   try {
     const studentData = await Student.destroy({
       where: {

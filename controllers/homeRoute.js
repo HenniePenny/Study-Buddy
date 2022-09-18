@@ -26,7 +26,7 @@ router.get('/program-managers', withAuth , async (req, res) => {
 
 
 //this route will serve the user dashboard based on type of logged in user
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   res.render('dashboard');
 });
 
@@ -35,7 +35,7 @@ router.get('/', async (req, res) => {
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('dashboard');
+    res.redirect('/dashboard');
     return;
   }
 
