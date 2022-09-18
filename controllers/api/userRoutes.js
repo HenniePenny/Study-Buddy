@@ -11,7 +11,7 @@ const { User, Cohort } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // List all users (Name, email)
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   try {
     const userData = await User.findAll({
       attributes: { exclude: ['password'] },
@@ -32,7 +32,7 @@ router.get('/', async (req, res) => {
 });
 
 // Create a user
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     const userData = await User.create(req.body);
 
@@ -48,7 +48,7 @@ router.post('/', async (req, res) => {
 });
 
 // Delete a user
-router.delete('/:userId', async (req, res) => {
+router.delete('/:userId', withAuth, async (req, res) => {
   try {
     const userData = await User.destroy({
       where: {
@@ -67,7 +67,7 @@ router.delete('/:userId', async (req, res) => {
 });
 
 // Find all cohort with userId
-router.get('/cohort/:userId', async (req, res) => {
+router.get('/cohort/:userId', withAuth, async (req, res) => {
   try {
     const cohortData = await Cohort.findAll({
       // attributes: { exclude: ['password'] },
@@ -95,7 +95,7 @@ router.get('/cohort/:userId', async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({ where: { email: req.body.email } });
-
+    console.log(userData)
     if (!userData) {
       res
         .status(400)
@@ -104,7 +104,8 @@ router.post('/login', async (req, res) => {
     }
 
     const validPassword = await userData.checkPassword(req.body.password);
-
+    console.log(validPassword)
+    console.log(67)
     if (!validPassword) {
       res
         .status(400)
@@ -119,7 +120,7 @@ router.post('/login', async (req, res) => {
       res.json({ user: userData, message: 'You are now logged in!' });
     });
   } catch (err) {
-    res.status(400).json(err);
+    res.status(500).json(err);
   }
 });
 

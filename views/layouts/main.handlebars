@@ -144,13 +144,22 @@
     </div>
     <!-- /.sidebar -->
   </aside>
-
+ <!-- Conditionally render login or logout links -->
+        {{#if logged_in}}
+        <a href="/">dashboard</a> |
+        {{!-- <button class="no-button" id="logout">logout</button> --}}
+        {{else}}
+        <a href="/login">login</a>
+        {{/if}}
   {{{body}}}
 
   <footer class="main-footer">
     <strong>Copyright &copy; 2022 Study Buddy. <a href="https://adminlte.io">Built with AdminLTE.io (Version 3.2.0)</a>.</strong> All rights reserved.
   </footer>
-
+  <!-- Render script for logged in users only -->
+  {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
