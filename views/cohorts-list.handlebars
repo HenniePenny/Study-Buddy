@@ -22,16 +22,6 @@
 
     <!-- Default box -->
     <div class='card'>
-      {{! <div class="card-header">
-          <button type="button" class="btn btn-secondary">EMBA 2020-22</button>
-        </div>
-        <div class="card-header">
-          <button type="button" class="btn btn-secondary">EMBA 2021-23</button>          
-        </div>
-        <div class="card-header">
-          <button type="button" class="btn btn-secondary">EMBA 2022-23</button>          
-        </div> }}
-
       {{#each cohortData as |cohort|}}
         {{> cohort everyCohort=cohort.dataValues}}
       {{/each}}
