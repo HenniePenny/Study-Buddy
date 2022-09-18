@@ -17,10 +17,10 @@ Group.init(
       allowNull: false,
     },
 
-    project_number: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
+    // project_number: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false,
+    // },
 
     cohort_id: {
       type: DataTypes.INTEGER,
