@@ -8,7 +8,7 @@ const { Cohort, Student } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // Get All Cohorts (Done)
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   try {
     const cohortData = await Cohort.findAll({
       order: [['startDate', 'ASC']],
@@ -29,7 +29,7 @@ router.get('/', async (req, res) => {
 });
 
 // Add a new cohort (Done)
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     const cohortData = await Cohort.create(req.body);
 
@@ -45,7 +45,7 @@ router.post('/', async (req, res) => {
 });
 
 // Get details of a single cohort (done)
-router.get('/:cohortId', async (req, res) => {
+router.get('/:cohortId', withAuth, async (req, res) => {
   try {
     const cohortData = await Cohort.findAll({
       where: { id: req.params.cohortId },
@@ -58,14 +58,14 @@ router.get('/:cohortId', async (req, res) => {
       return;
     }
     // const cohorts = cohortData.map((project) => project.get({ plain: true })); //commment out this line after handlebars are complete
-    res.render('cohorts-list', {cohortData}) // Change to render handlebars page (res.render('cohort '))
+    res.render('cohort', {cohortData}) // Change to render handlebars page (res.render('cohort '))
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
 // Add Multiple students to cohort (done)
-router.post('/:cohortId/add-students', async (req, res) => {
+router.post('/:cohortId/add-students', withAuth, async (req, res) => {
   console.log(req.body)
   try {
     const cohortId = req.params.cohortId;
@@ -91,7 +91,7 @@ router.post('/:cohortId/add-students', async (req, res) => {
 });
 
 // Delete a new cohort (Done)
-router.delete('/:cohortId', async (req, res) => {
+router.delete('/:cohortId', withAuth, async (req, res) => {
   try {
     const cohortData = await Cohort.destroy({
       where: {

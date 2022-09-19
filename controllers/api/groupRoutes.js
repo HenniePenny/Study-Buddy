@@ -7,9 +7,10 @@ const withAuth = require('../../utils/auth');
 const generateGroups = require('../../utils/helpers');
 
 // Get groups for a given Cohorts (not done)
-router.get('/get-groups/:cohortId', async (req, res) => {
+router.get('/get-groups/:cohortId', withAuth, async (req, res) => {
   try {
     const groupData = await Group.findAll({
+      where: { id: req.params.groupId },
       order: [['group_number', 'ASC']],
     });
 
@@ -26,9 +27,9 @@ router.get('/get-groups/:cohortId', async (req, res) => {
   }
 });
 
-//  (not done)
 // Generate groups
-router.get('/:cohortId', async (req, res) => {
+router.get('/:cohortId', withAuth, async (req, res) => {
+
   try {
     const cohortId = req.params.cohortId;
     const studentData = await Student.findAll({
@@ -40,6 +41,7 @@ router.get('/:cohortId', async (req, res) => {
     const groupedStudents = generateGroups(students, 6);
 
     res.status(200).json(groupedStudents);
+
   } catch (err) {
     res.status(500).json(err);
   }
