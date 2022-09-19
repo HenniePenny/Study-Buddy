@@ -36,7 +36,13 @@ Our student project team worked quickly around our diverse schedules to meet the
 ![Study Buddy Logo](./assets/logos/study-buddy-logo.png)
 
 
+![Login page](./assets/screenshots/Screenshot%201%20project%202.png)
 
+
+![Dashboard](./assets//screenshots/Screenshot%202%20project%202.png)
+
+
+![Dashboard](./assets//screenshots/Screenshot%202%20project%202.png)
 
 ## Project team
 * Nirmeet Baweja ([@nirmeet-baweja](https://github.com/nirmeet-baweja)), instructor and project lead  
