@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { User } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/program-managers', withAuth , async (req, res) => {
+router.get('/program-managers', withAuth, async (req, res) => {
   try {
     const userData = await User.findAll({
       attributes: { exclude: ['password'] },
@@ -10,7 +10,6 @@ router.get('/program-managers', withAuth , async (req, res) => {
     });
 
     const users = userData.map((project) => project.get({ plain: true }));
-
 
     // console.log(users)
     // res.json(users)
@@ -24,22 +23,20 @@ router.get('/program-managers', withAuth , async (req, res) => {
   }
 });
 
-
 //this route will serve the user dashboard based on type of logged in user
 router.get('/', withAuth, async (req, res) => {
   res.render('dashboard');
 });
 
-
 // This is complete
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/dashboard');
+    res.redirect('/');
     return;
   }
 
- res.render('login');
+  res.render('login');
   // res.json('this will be the login page');
 });
 
