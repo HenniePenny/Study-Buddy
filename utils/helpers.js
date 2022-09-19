@@ -2,22 +2,14 @@ const studentData = require('../seeds/studentData.json');
 
 const generateGroups = (students, groupSize) => {
   const numberOfGroups = Math.floor(students.length / groupSize);
-  // console.log('numberOfGroups', numberOfGroups);
-  // const shuffledArray = students.sort(() => Math.random() - 0.5);
 
   // check that students who share the same nationality are assigned to different groups, unless the number of students with the same nationality exceeds the number of groups
-  const shuffledArray = students.sort((a, b) =>
+  const sortedArray = students.sort((a, b) =>
     a.nationality > b.nationality ? 1 : -1
   );
-  // console.log(shuffledArray);
-  // const sortedArray = studentData.sort((a, b) => {
-  //   return a.nationality > b.nationality ? 1 : -1;
-  // });
 
   // assign different group numbers to students, the group number should vary from 1 to the number of groups
-  const distributedGroups = shuffledArray.map((student, index) => {
-    // console.log('index', index);
-    // console.log('index % numberOfGroups', index % numberOfGroups);
+  const distributedGroups = sortedArray.map((student, index) => {
     return {
       ...student,
       group_number: (index % numberOfGroups) + 1,

@@ -2,11 +2,12 @@
 // Create groups for a cohort
 
 const router = require('express').Router();
-const { Group } = require('../../models/');
+const { Group, Student } = require('../../models/');
 const withAuth = require('../../utils/auth');
+const generateGroups = require('../../utils/helpers');
 
 // Get groups for a given Cohorts (not done)
-router.get('/:cohortId', async (req, res) => {
+router.get('/get-groups/:cohortId', async (req, res) => {
   try {
     const groupData = await Group.findAll({
       order: [['group_number', 'ASC']],
@@ -27,16 +28,18 @@ router.get('/:cohortId', async (req, res) => {
 
 //  (not done)
 // Generate groups
-router.post('/', async (req, res) => {
+router.get('/:cohortId', async (req, res) => {
   try {
-    const groupData = await Group.create(req.body);
+    const cohortId = req.params.cohortId;
+    const studentData = await Student.findAll({
+      where: { cohort_id: cohortId },
+    });
 
-    // req.session.save(() => {
-    //   req.session.user_id = groupData.id;
-    //   req.session.logged_in = true;
+    const students = studentData.map((student) => student.get({ plain: true }));
 
-      res.status(200).json(groupData);
-    // });
+    const groupedStudents = generateGroups(students, 6);
+
+    res.status(200).json(groupedStudents);
   } catch (err) {
     res.status(500).json(err);
   }
