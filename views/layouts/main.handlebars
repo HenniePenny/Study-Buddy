@@ -199,6 +199,10 @@
     </div>
     <!-- ./wrapper -->
   </body>
+
+  {{!-- The scripts should be added to the templates they are used in.
+  Loading all the scripts for all the pages makes the app slow and sluggish --}}
+
   <!-- jQuery -->
   <script src='/plugins/jquery/jquery.min.js'></script>
   <!-- Bootstrap 4 -->
@@ -247,6 +251,9 @@
     crossorigin='anonymous'
     referrerpolicy='no-referrer'
   ></script>
+
+  {{!-- This would be better placed either in controller or in utils  --}}
+  
   <!-- Page-specific Papaparse script -->
   <script>
     var fileInput = document.getElementById('csv');
