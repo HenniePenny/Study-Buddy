@@ -10,6 +10,9 @@ const router = require('express').Router();
 const { User, Cohort } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+/**
+ * API routes return json value and should not be used to render HTML pages.
+ */
 // List all users (Name, email)
 router.get('/', withAuth, async (req, res) => {
   try {
@@ -36,6 +39,9 @@ router.post('/', withAuth, async (req, res) => {
   try {
     const userData = await User.create(req.body);
 
+    /**
+     * Unused / commented code should not make it to the main branch.
+     */
     // req.session.save(() => {
     //   req.session.user_id = userData.id;
     //   req.session.logged_in = true;
@@ -66,10 +72,16 @@ router.delete('/:userId', withAuth, async (req, res) => {
   }
 });
 
+/**
+ * This route is not functional
+ */
 // Find all cohort with userId
 router.get('/cohort/:userId', withAuth, async (req, res) => {
   try {
     const cohortData = await Cohort.findAll({
+      /**
+       * Unused / commented code should not make it to the main branch.
+       */
       // attributes: { exclude: ['password'] },
       // order: [['firstName', 'ASC']],
       // where: {
@@ -94,7 +106,7 @@ router.get('/cohort/:userId', withAuth, async (req, res) => {
 // Login
 router.post('/login', async (req, res) => {
   try {
-    console.log(req.body)
+    console.log(req.body);
     const userData = await User.findOne({ where: { email: req.body.email } });
     if (!userData) {
       res
@@ -121,7 +133,7 @@ router.post('/login', async (req, res) => {
       res.json({ user: userData, message: 'You are now logged in!' });
     });
   } catch (err) {
-    console.log(err)
+    console.log(err);
     res.status(500).json(err);
   }
 });

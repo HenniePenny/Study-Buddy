@@ -7,6 +7,9 @@ const router = require('express').Router();
 const { Cohort, Student } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+/**
+ * API routes return json value and should not be used to render HTML pages.
+ */
 // Get All Cohorts (Done)
 router.get('/', withAuth, async (req, res) => {
   try {
@@ -20,9 +23,13 @@ router.get('/', withAuth, async (req, res) => {
         .json({ message: 'Cohort does not exists, please try again' });
       return;
     }
+
+    /**
+     * Unused / commented code should not make it to the main branch.
+     */
     // const cohorts = cohortData.map((project) => project.get({ plain: true }));
     // res.json(cohorts)
-    res.render('cohorts-list', {cohortData});
+    res.render('cohorts-list', { cohortData });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -33,11 +40,14 @@ router.post('/', withAuth, async (req, res) => {
   try {
     const cohortData = await Cohort.create(req.body);
 
+    /**
+     * Unused / commented code should not make it to the main branch.
+     */
     // req.session.save(() => {
     //   req.session.user_id = cohortData.id;
     //   req.session.logged_in = true;
 
-      res.status(200).json(cohortData);
+    res.status(200).json(cohortData);
     // });
   } catch (err) {
     res.status(400).json(err);
@@ -58,7 +68,7 @@ router.get('/:cohortId', withAuth, async (req, res) => {
       return;
     }
     // const cohorts = cohortData.map((project) => project.get({ plain: true })); //commment out this line after handlebars are complete
-    res.render('cohort', {cohortData}) // Change to render handlebars page (res.render('cohort '))
+    res.render('cohort', { cohortData }); // Change to render handlebars page (res.render('cohort '))
   } catch (err) {
     res.status(500).json(err);
   }
@@ -66,7 +76,7 @@ router.get('/:cohortId', withAuth, async (req, res) => {
 
 // Add Multiple students to cohort (done)
 router.post('/:cohortId/add-students', withAuth, async (req, res) => {
-  console.log(req.body)
+  console.log(req.body);
   try {
     const cohortId = req.params.cohortId;
     // console.log(cohortId);
@@ -74,16 +84,16 @@ router.post('/:cohortId/add-students', withAuth, async (req, res) => {
     const studentDataWithCohortId = req.body.map((student) => {
       student.cohort_id = parseInt(cohortId);
       return student;
-    } );
+    });
 
-    console.log(studentDataWithCohortId)
+    console.log(studentDataWithCohortId);
     const studentData = await Student.bulkCreate(studentDataWithCohortId);
     // console.log(5)
     // req.session.save(() => {
     //   req.session.cohort_id = studentData.id;
-      // req.session.logged_in = true;
+    // req.session.logged_in = true;
 
-      res.status(200).json(studentData);
+    res.status(200).json(studentData);
     // });
   } catch (err) {
     res.status(500).json(err);

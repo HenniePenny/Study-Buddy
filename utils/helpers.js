@@ -1,5 +1,11 @@
 const studentData = require('../seeds/studentData.json');
 
+/**
+ *  You can JSDoc to document your project.
+ * @param {*} students
+ * @param {*} groupSize
+ * @returns
+ */
 const generateGroups = (students, groupSize) => {
   const numberOfGroups = Math.floor(students.length / groupSize);
 
